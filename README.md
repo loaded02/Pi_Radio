@@ -2,7 +2,7 @@
 Streaming Radio for RasperryPi as a weekend project. 
 This is a documentation for myself, so I know what I have done so far.
 
-##Roadmap
+## Roadmap
 - [x] Pi plays Radio from Url Stream
 - [x] PiRadio has some kind of UI (WebInterface and Buttons/LCD)
 - [x] PiRadio has LCD that displays currently playing station/song
@@ -12,21 +12,21 @@ This is a documentation for myself, so I know what I have done so far.
 - [ ] on/off switch
 - [ ] use different Webserver
 
-##Hardware
+## Hardware
 - Raspberry Pi Model B+ V1.2
 - Adafruit Blue&White 16x2 LCD+Keypad Kit for Raspberry Pi
 - Active Speaker
 
-##OS Image
+## OS Image
 - Raspian
 
-####Tutorials used:
+#### Tutorials used:
 - MPD, Webserver [SemperVideo](https://www.youtube.com/watch?v=pnpnWMh-IG4)
 - LCD-Kit Setup I2C [Adafruit](https://learn.adafruit.com/adafruit-16x2-character-lcd-plus-keypad-for-raspberry-pi/usage)
 - LCD-Kit Python script [Adafruit](https://github.com/adafruit/Python-WiFi-Radio/blob/master/PiPhi.py)
 
 
-##MPD/MPC
+## MPD/MPC
 ```shell
 apt-get update
 apt-get upgrade
@@ -43,13 +43,13 @@ paste new sender.m3u as /var/lib/mpd/playlists/sender.m3u
 ```shell
 mpc load sender.m3u
 ```
-##WebServer
+## WebServer
 ```shell
 apt-get install apache2 php5 libapache2-mod-php5
 ```
 access Pi at http://\<my-ip\>
 
-##FTPServer
+## FTPServer
 ```shell
 apt-get install proftpd
 ```
@@ -64,14 +64,16 @@ paste html folder in /var/www
 
 (icons from [iconfinder.com](http://iconfinder.com), images from radiostations are missing in rep)
 
-##Launch at startup
+## Launch at startup
 
 paste rc.local in /etc/rc.local
 
-##Static Ip
+## Static Ip
 
-##LCD-Kit
-###I2C Support
+via Router
+
+## LCD-Kit
+### I2C Support
 ```shell
 apt-get install python-smbus i2c-tools
 ```
@@ -101,7 +103,7 @@ test
 ```shell
 sudo i2cdetect -y 1
 ```
-###Python Code
+### Python Code
 ```shell
 sudo apt-get update
 sudo apt-get install build-essential python-dev python-smbus python-pip git
