@@ -8,7 +8,7 @@ This is a documentation for myself, so I know what I have done so far.
 - [x] PiRadio has LCD that displays currently playing station/song
 - [ ] Make UI robust. (Problem is actually mpd)
 - [ ] Minimize boot-time
-- [ ] build case for Pi and custom speakers
+- [x] build case for Pi and custom speakers
 - [ ] on/off switch
 - [ ] use different Webserver
 
@@ -127,4 +127,9 @@ test
 ```
 sudo python PiRadio.py
 ```
+
+## Pictures
+
+![1](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_1.jpg)
+![2](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_2.jpg)
 
