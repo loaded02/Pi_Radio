@@ -196,10 +196,6 @@ while True:
     except:
         time.sleep(1) # Pause a moment, keep trying
 
-#print('Playing Default Station')
-#os.system('mpc stop')
-#time.sleep(1)
-#os.system('mpc play 1')
 stationList, stationIDs = getStations()
 time.sleep(1)
 

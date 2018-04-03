@@ -17,6 +17,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
+su root -c "mpc clear"
 su root -c "mpc load sender"
 su root -c "mpc play 1"
 su root -c "python /home/pi/PiRadio/PiRadio.py &"
