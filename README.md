@@ -9,24 +9,38 @@ This is a documentation for myself, so I know what I have done so far.
 - [ ] Make UI robust. (Problem is actually mpd)
 - [ ] Minimize boot-time
 - [x] build case for Pi and custom speakers
-- [ ] on/off switch
+- [x] on/off switch
+- [x] Volume control
 - [ ] use different Webserver
+
+![1](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_1.jpg)
 
 ## Hardware
 - Raspberry Pi Model B+ V1.2
 - Adafruit Blue&White 16x2 LCD+Keypad Kit for Raspberry Pi
-- Active Speaker
+- Adafruit Stereo 3.7W Class D Audio Amplifier - MAX98306
+- 8 Ohm 5 Watt Speakers
 
 ## OS Image
-- Raspian
+- Raspian 2018-03-13-raspbian-stretch-lite
+- for ssh put empty file named 'ssh' into /boot partition
 
 #### Tutorials used:
 - MPD, Webserver [SemperVideo](https://www.youtube.com/watch?v=pnpnWMh-IG4)
 - LCD-Kit Setup I2C [Adafruit](https://learn.adafruit.com/adafruit-16x2-character-lcd-plus-keypad-for-raspberry-pi/usage)
 - LCD-Kit Python script [Adafruit](https://github.com/adafruit/Python-WiFi-Radio/blob/master/PiPhi.py)
-
+- Amplifier & Speakers [Adafruit](https://learn.adafruit.com/stereo-3-7w-class-d-audio-amplifier/build-a-portable-sound-system)
 
 ## MPD/MPC
+```
+cd /etc/apt/sources.list.d
+sudo nano mpd.list
+```
+Insert the following lines
+```
+deb http://www.lesbonscomptes.com/upmpdcli/downloads/mpd-debian/ stretch main
+deb-src http://www.lesbonscomptes.com/upmpdcli/downloads/mpd-debian/ stretch main
+```
 ```shell
 apt-get update
 apt-get upgrade
@@ -41,7 +55,7 @@ service mpd restart
 ```
 paste new sender.m3u as /var/lib/mpd/playlists/sender.m3u
 ```shell
-mpc load sender.m3u
+mpc load sender
 ```
 ## WebServer
 ```shell
@@ -134,4 +148,6 @@ sudo python PiRadio.py
 
 ![1](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_1.jpg)
 ![2](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_2.jpg)
+![1](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_3.jpg)
+![2](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_4.jpg)
 
