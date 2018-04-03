@@ -6,8 +6,8 @@ This is a documentation for myself, so I know what I have done so far.
 - [x] Pi plays Radio from Url Stream
 - [x] PiRadio has some kind of UI (WebInterface and Buttons/LCD)
 - [x] PiRadio has LCD that displays currently playing station/song
-- [ ] Make UI robust. (Problem is actually mpd)
-- [ ] Minimize boot-time
+- [x] Make UI robust. (Problem is actually mpd -> fixed mpd version 0.20.12)
+- [ ] Minimize boot-time (~37 sec.)
 - [x] build case for Pi and custom speakers
 - [x] on/off switch
 - [x] Volume control
@@ -30,6 +30,12 @@ This is a documentation for myself, so I know what I have done so far.
 - LCD-Kit Setup I2C [Adafruit](https://learn.adafruit.com/adafruit-16x2-character-lcd-plus-keypad-for-raspberry-pi/usage)
 - LCD-Kit Python script [Adafruit](https://github.com/adafruit/Python-WiFi-Radio/blob/master/PiPhi.py)
 - Amplifier & Speakers [Adafruit](https://learn.adafruit.com/stereo-3-7w-class-d-audio-amplifier/build-a-portable-sound-system)
+
+## Speed Up Boot Time
+- Install rcconf and disable unnecessary services.
+- add 'quiet' flag to /boot/cmdline.txt
+
+TODO: - initramfs, minimal Yocto Image
 
 ## MPD/MPC
 ```
