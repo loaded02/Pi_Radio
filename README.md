@@ -17,6 +17,7 @@ This is a documentation for myself, so I know what I have done so far.
 
 ## Hardware
 - Raspberry Pi Model B+ V1.2
+- Sandisk 32GB MicroSD HC1 Ultra, Class 10, Read 80MB/s, Write 10MB/s
 - Adafruit Blue&White 16x2 LCD+Keypad Kit for Raspberry Pi
 - Adafruit Stereo 3.7W Class D Audio Amplifier - MAX98306
 - 8 Ohm 5 Watt Speakers
@@ -35,7 +36,7 @@ This is a documentation for myself, so I know what I have done so far.
 - Install rcconf and disable unnecessary services.
 - add 'quiet' flag to /boot/cmdline.txt
 
-TODO: - initramfs, minimal Yocto Image
+> TODO: - initramfs, minimal Yocto Image
 
 ## MPD/MPC
 ```
