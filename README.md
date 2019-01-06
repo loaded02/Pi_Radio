@@ -4,14 +4,13 @@ This is a documentation for myself, so I know what I have done so far.
 
 ## Roadmap
 - [x] Pi plays Radio from Url Stream
-- [x] PiRadio has some kind of UI (WebInterface and Buttons/LCD)
+- [x] PiRadio has some kind of UI (Buttons/LCD)
 - [x] PiRadio has LCD that displays currently playing station/song
 - [x] Make UI robust. (Problem is actually mpd -> fixed mpd version 0.20.12)
 - [ ] Minimize boot-time (~37 sec.)
 - [x] build case for Pi and custom speakers
 - [x] on/off switch
 - [x] Volume control
-- [ ] use different Webserver
 
 ![1](https://github.com/loaded02/Pi_Radio/raw/master/doc/pic_1.jpg)
 
@@ -23,71 +22,59 @@ This is a documentation for myself, so I know what I have done so far.
 - 8 Ohm 5 Watt Speakers
 
 ## OS Image
-- Raspian 2018-03-13-raspbian-stretch-lite
-- for ssh put empty file named 'ssh' into /boot partition
+- ArchLinuxARM-2018.12-rpi
 
 #### Tutorials used:
+- Arch Linux for RasperryPi [ArchLinux ARM](https://archlinuxarm.org/platforms/armv6/raspberry-pi)
 - MPD, Webserver [SemperVideo](https://www.youtube.com/watch?v=pnpnWMh-IG4)
 - LCD-Kit Setup I2C [Adafruit](https://learn.adafruit.com/adafruit-16x2-character-lcd-plus-keypad-for-raspberry-pi/usage)
 - LCD-Kit Python script [Adafruit](https://github.com/adafruit/Python-WiFi-Radio/blob/master/PiPhi.py)
 - Amplifier & Speakers [Adafruit](https://learn.adafruit.com/stereo-3-7w-class-d-audio-amplifier/build-a-portable-sound-system)
 
 ## Speed Up Boot Time
-- Install rcconf and disable unnecessary services.
-- add 'quiet' flag to /boot/cmdline.txt
 
 > TODO: - initramfs, minimal Yocto Image
 
 ## MPD/MPC
-```
-cd /etc/apt/sources.list.d
-sudo nano mpd.list
-```
-Insert the following lines
-```
-deb http://www.lesbonscomptes.com/upmpdcli/downloads/mpd-debian/ stretch main
-deb-src http://www.lesbonscomptes.com/upmpdcli/downloads/mpd-debian/ stretch main
+```shell
+pacman -Syu
 ```
 ```shell
-apt-get update
-apt-get upgrade
-```
-```shell
-apt-get install mpd mpc alsa-utils
+pacman -S mpd
 mv /etc/mpd.conf /etc/mpd.conf.orig
 ```
+> install mpc-git from ArchAUR. Unmute sound with alsamixer.
+
 paste new mpd.conf as /etc/mpd.conf
 ```shell
-service mpd restart
+systemctl start mpd.service
+systemctl enable mpd.service
 ```
 paste new sender.m3u as /var/lib/mpd/playlists/sender.m3u
 ```shell
 mpc load sender
 ```
-## WebServer
-```shell
-apt-get install apache2 php5 libapache2-mod-php5
-```
-access Pi at http://\<my-ip\>
 
 ## FTPServer
 ```shell
-apt-get install proftpd
+pacman -S vsftpd
+```
+add these lines in /etc/vsftp.conf
+```shell
+anonymous_enable=NO
+local_enable=YES
 ```
 access with e.g. Filezilla
 
-```shell
-cd /var/www
-chmod 777 -R /var/www
-```
-
-paste html folder in /var/www
-
-(icons from [iconfinder.com](http://iconfinder.com), images from radiostations are missing in rep)
-
 ## Launch at startup
 
-paste rc.local in /etc/rc.local
+create new file in /etc/systemd/system named mystart.service
+create new file in /usr/bin named mystartscript.sh
+```shell
+chmod 755 /usr/bin/mystartscript.sh
+systemctl start mystart.service
+systemctl enable mystart.service
+```
 
 ## Static Ip
 
@@ -95,22 +82,10 @@ via Router
 
 ## LCD-Kit
 ### I2C Support
-```shell
-apt-get install python-smbus i2c-tools
-```
+
+> install i2c-tools-git, python-smbus-git, raspi-config from ArchAUR
+
 (i2c-tools is optional)
-
-add these lines in /etc/modules
-```shell
-i2c-bcm2708
-i2c-dev
-```
-comment out these lines in /etc/modprobe.d/raspi-blacklist.conf
-```shell
-#blacklist spi-bcm2708
-#blacklist i2c-bcm2708
-```
-
 add these lines in /boot/config.txt
 ```shell
 dtparam=i2c1=on
@@ -126,8 +101,7 @@ sudo i2cdetect -y 1
 ```
 ### Python Code
 ```shell
-sudo apt-get update
-sudo apt-get install build-essential python-dev python-smbus python-pip git
+pacman -S python python-pip git
 sudo pip install RPi.GPIO
 git clone https://github.com/adafruit/Adafruit_Python_CharLCD.git
 cd Adafruit_Python_CharLCD

@@ -1,0 +1,11 @@
+[Unit]
+Description=AutostartScript
+After=mpd.service
+
+[Service]
+ExecStart=/usr/bin/mystartscript.sh
+Type=simple
+User=root
+
+[Install]
+WantedBy=multi-user.target  
