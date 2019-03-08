@@ -7,7 +7,7 @@ This is a documentation for myself, so I know what I have done so far.
 - [x] PiRadio has some kind of UI (Buttons/LCD)
 - [x] PiRadio has LCD that displays currently playing station/song
 - [x] Make UI robust. (Problem is actually mpd -> fixed mpd version 0.20.12)
-- [ ] Minimize boot-time (~37 sec.)
+- [ ] Minimize boot-time (~5 sec. Problem is start of LCD)
 - [x] build case for Pi and custom speakers
 - [x] on/off switch
 - [x] Volume control
